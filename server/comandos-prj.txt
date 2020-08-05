@@ -1,0 +1,23 @@
+Iniciar o projeto: criar uma pasta e entrar nela, exetuar o power shell
+yarn init -y
+
+yarn add typescript -D    <-- instalar como dependencia de desenvolvimento ( -D )
+yarn tsc --init           <-- criar as configurações para o typescript   
+yarn add ts-node-dev -D   <-- um observador, caso ocorra alguma mudança na logica ele é responsalvel por dar um refresh no server.
+
+Executar o Server:
+ajustas o package.json 
+"scripts": {
+    "start": "tsnd --transpile-only --ignore-watch node_module --respawn src/server.ts"
+  },
+digitar o comando:  
+yarn start
+
+---
+yarn add express
+yarn add @types/express -D
+yarn add knex
+yarn add sqlite3
+yarn add cors
+yarn add @types/cors -D
+
