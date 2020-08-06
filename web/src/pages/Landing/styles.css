@@ -42,6 +42,7 @@
     border-radius: 0.8rem;
     margin-right: 1.6rem;
     font: 700 2.0rem Archivo;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +82,7 @@
 }
 
 .total-connections {
-    font-size:  1.8rem;
+    font-size:  1.4rem;
 
     display: flex;
     align-items: center;

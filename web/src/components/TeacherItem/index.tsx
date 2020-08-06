@@ -1,31 +1,55 @@
 import React from 'react';
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
 import './styles.css';
+import api from '../../services/api';
 
-function TeacherItem() {
+export interface Teacher {
+    id: number;
+    avatar: string;
+    bio: string;
+    cost: number;
+    name: string;
+    subject: string;
+    whatsapp: string;
+}
+
+interface TeacherItemProps {
+    teacher: Teacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+    function createNewConnection(){
+        api.post('connections', {
+            user_id: teacher.id,
+        })
+
+    }
+
     return (
         <article className="teacher-item">
             <header>
-                <img src="https://avatars1.githubusercontent.com/u/7707439?s=460&u=1d491cc1c8c343dba61c6be065222e12ed1ffe38&v=4" alt="Tiago Ciceri" />
+                <img src={teacher.avatar} alt={teacher.name} />
                 <div>
-                    <strong>Tiago Ciceri</strong>
-                    <span>Matemática</span>
+                    <strong>{teacher.name}</strong>
+                    <span>{teacher.subject}</span>
                 </div>
             </header>
             <p>
-                Texto fake para demonstração de lay-out.
-                <br /> <br />
-                Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.
+                {teacher.bio}
             </p>
 
             <footer>
                 <p>
-                    Preço/hora <strong>R$ 80,00</strong>
+                    Preço/hora <strong>R$ {teacher.cost}</strong>
                 </p>
-                <button>
+                <a 
+                    onClick={createNewConnection}
+                    href={`https://wa.me/${teacher.whatsapp}`}
+                    target="_blank"
+                >
                     <img src={whatsappIcon} alt="WhatsApp" />
                     Entrar em contato
-                </button>
+                </a>
             </footer>
 
         </article>
